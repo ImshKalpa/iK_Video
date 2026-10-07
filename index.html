@@ -1,0 +1,418 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>iK Video | iOS 27 Liquid Glass</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#0b0b0f;
+    color:white;
+}
+
+header{
+    height:75px;
+    background:#111118;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 6%;
+    border-bottom:1px solid #25252d;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.logo{
+    font-size:30px;
+    font-weight:bold;
+}
+
+.logo span{
+    color:#00e5ff;
+}
+
+nav a{
+    color:#ddd;
+    text-decoration:none;
+    margin-left:25px;
+    font-size:15px;
+}
+
+nav a:hover{
+    color:#00e5ff;
+}
+
+.hero{
+    min-height:520px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:60px 20px;
+    background:
+    radial-gradient(
+        circle at center,
+        #17303a 0%,
+        #0b0b0f 55%
+    );
+}
+
+.hero h1{
+    font-size:60px;
+    margin-bottom:15px;
+}
+
+.hero h1 span{
+    color:#00e5ff;
+}
+
+.hero p{
+    color:#aaa;
+    font-size:18px;
+    max-width:650px;
+    margin:auto;
+    line-height:1.7;
+}
+
+.hero button{
+    margin-top:30px;
+    padding:14px 28px;
+    border:0;
+    border-radius:8px;
+    background:#00e5ff;
+    color:#001014;
+    font-weight:bold;
+    cursor:pointer;
+    font-size:16px;
+    transition:0.3s;
+}
+
+.hero button:hover{
+    background:#fff;
+    transform:scale(1.05);
+}
+
+.admin{
+    background:#101016;
+    border-top:1px solid #25252d;
+    border-bottom:1px solid #25252d;
+    padding:60px 20px;
+    text-align:center;
+}
+
+.admin-box{
+    max-width:600px;
+    margin:auto;
+}
+
+.admin h2{
+    font-size:32px;
+    margin-bottom:12px;
+}
+
+.admin p{
+    color:#999;
+    line-height:1.6;
+}
+
+.admin button{
+    margin-top:25px;
+    padding:13px 25px;
+    background:#00e5ff;
+    border:0;
+    border-radius:7px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.admin button:hover{
+    background:white;
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    color:#777;
+    background:#08080b;
+}
+
+footer span{
+    color:#00e5ff;
+}
+
+@media(max-width:700px){
+
+    header{
+        padding:0 20px;
+    }
+
+    nav a{
+        margin-left:10px;
+        font-size:13px;
+    }
+
+    .hero h1{
+        font-size:42px;
+    }
+
+    .hero p{
+        font-size:15px;
+    }
+}
+
+/* Theme button beside Admin */
+header nav{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+header nav a{margin-left:0!important;}
+header nav .liquid-toggle{
+  position:relative!important;
+  right:auto!important;
+  top:auto!important;
+  z-index:10!important;
+  margin-left:2px;
+  padding:9px 14px!important;
+  min-height:38px;
+  width:auto;
+  font-size:13px;
+}
+@media(max-width:700px){
+  header nav{gap:8px;}
+  header nav .liquid-toggle{
+    width:42px!important;
+    height:38px;
+    padding:0!important;
+  }
+}
+
+</style>
+
+<style>
+/* ===== iOS 27 LIQUID GLASS THEME ===== */
+:root{
+  --bg:#edf2f8;--bg2:#dfe8f5;--text:#10131a;--muted:#667085;
+  --glass:rgba(255,255,255,.34);--glass2:rgba(255,255,255,.52);
+  --line:rgba(255,255,255,.72);--accent:#007aff;--accent2:#af52de;
+  --shadow:0 25px 70px rgba(31,48,80,.16),inset 0 1px 0 rgba(255,255,255,.8);
+}
+html[data-theme="dark"]{
+  --bg:#07090e;--bg2:#111624;--text:#f5f7fb;--muted:#aab2c2;
+  --glass:rgba(25,29,40,.45);--glass2:rgba(34,39,53,.62);
+  --line:rgba(255,255,255,.16);--shadow:0 30px 80px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.12);
+}
+html{background:var(--bg);transition:background .7s ease;color-scheme:light}
+html[data-theme="dark"]{color-scheme:dark}
+body{
+  min-height:100vh;color:var(--text)!important;
+  background:
+   radial-gradient(650px 500px at 8% 5%,rgba(0,122,255,.22),transparent 68%),
+   radial-gradient(700px 520px at 92% 12%,rgba(175,82,222,.20),transparent 68%),
+   radial-gradient(700px 500px at 55% 100%,rgba(255,55,95,.12),transparent 70%),
+   linear-gradient(135deg,var(--bg),var(--bg2))!important;
+  transition:background .7s ease,color .7s ease;
+}
+body:before,body:after{
+ content:"";position:fixed;z-index:-1;pointer-events:none;width:40vw;height:40vw;
+ border-radius:50%;filter:blur(70px);opacity:.35;animation:float 14s ease-in-out infinite alternate
+}
+body:before{left:-14vw;top:8vh;background:#007aff}
+body:after{right:-14vw;bottom:-10vh;background:#af52de;animation-delay:-6s}
+@keyframes float{to{transform:translate(5%,8%) scale(1.12)}}
+
+header,.hero,.admin,footer{
+ background:var(--glass)!important;
+ border-color:var(--line)!important;
+ -webkit-backdrop-filter:blur(32px) saturate(180%);
+ backdrop-filter:blur(32px) saturate(180%);
+ box-shadow:var(--shadow)!important;
+}
+header{
+ position:sticky!important;top:12px!important;margin:0 18px;
+ height:68px!important;border:1px solid var(--line)!important;
+ border-radius:28px!important;padding:0 6%!important;
+}
+header:before,.hero:before,.admin:before,footer:before{
+ content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
+ background:linear-gradient(125deg,rgba(255,255,255,.35),transparent 35%,rgba(255,255,255,.08));
+}
+.logo, h1,h2,p,footer,nav a{position:relative;z-index:1}
+.logo{color:var(--text)!important}
+.logo span,.hero h1 span,footer span{color:var(--accent)!important}
+nav a{color:var(--text)!important;opacity:.75;transition:.3s}
+nav a:hover{color:var(--accent)!important;opacity:1}
+
+.hero{
+ position:relative!important;min-height:620px!important;margin:18px!important;
+ border:1px solid var(--line)!important;border-radius:40px!important;
+ overflow:hidden;padding:80px 20px!important;
+}
+.hero h1{font-size:clamp(44px,7vw,76px)!important;text-shadow:0 15px 50px rgba(0,0,0,.12)}
+.hero p{color:var(--muted)!important}
+.hero button,.admin button{
+ position:relative;z-index:2;border:1px solid var(--line)!important;
+ border-radius:999px!important;padding:15px 30px!important;
+ background:linear-gradient(135deg,rgba(255,255,255,.48),rgba(255,255,255,.12))!important;
+ color:var(--text)!important;box-shadow:0 15px 45px rgba(0,0,0,.13),inset 0 1px 0 rgba(255,255,255,.7)!important;
+ -webkit-backdrop-filter:blur(24px) saturate(180%);backdrop-filter:blur(24px) saturate(180%);
+ transition:.45s cubic-bezier(.22,1,.36,1)!important;
+}
+.hero button:hover,.admin button:hover{transform:translateY(-4px) scale(1.03)!important}
+
+.admin{
+ position:relative!important;margin:18px!important;border:1px solid var(--line)!important;
+ border-radius:38px!important;overflow:hidden;
+}
+.admin p{color:var(--muted)!important}
+
+footer{
+ position:relative!important;margin:18px!important;border:1px solid var(--line)!important;
+ border-radius:28px!important;overflow:hidden;
+ color:var(--muted)!important;
+}
+
+.liquid-toggle{
+ position:fixed;right:22px;top:86px;z-index:9999;
+ display:flex;align-items:center;gap:8px;padding:12px 16px;
+ border:1px solid var(--line);border-radius:999px;
+ background:var(--glass2);color:var(--text);cursor:pointer;
+ box-shadow:0 15px 45px rgba(0,0,0,.16),inset 0 1px 0 rgba(255,255,255,.65);
+ -webkit-backdrop-filter:blur(28px) saturate(180%);backdrop-filter:blur(28px) saturate(180%);
+ font-weight:700;transition:.45s ease;
+}
+.liquid-toggle:hover{transform:translateY(-3px) scale(1.03)}
+@media(max-width:700px){
+ header{margin:8px!important;top:8px!important;border-radius:22px!important}
+ .hero,.admin,footer{margin:10px!important;border-radius:28px!important}
+ .liquid-toggle{right:12px;top:82px;width:48px;height:48px;padding:0;justify-content:center}
+ .liquid-toggle span:last-child{display:none}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head>
+
+<body>
+
+
+<header>
+
+    <div class="logo">
+        <span>iK</span> Video
+    </div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#admin">Admin</a>
+        <button class="liquid-toggle" id="liquidToggle" type="button" aria-label="Toggle theme">
+            <span id="themeIcon">☀️</span><span id="themeLabel">Light</span>
+        </button>
+    </nav>
+
+</header>
+
+
+<section class="hero" id="home">
+
+    <div>
+
+        <h1>
+            Welcome to <span>iK Video</span>
+        </h1>
+
+        <p>
+            Watch my latest videos, edits, gaming content
+            and other creative videos in one place.
+        </p>
+
+        <!-- GOOGLE DRIVE FOLDER -->
+        <button onclick="window.open('https://drive.google.com/drive/folders/1tR3XbXYQdw01RvDxiWJSDvalnrEqrHJC?usp=sharing','_blank')">
+            Watch Videos
+        </button>
+
+    </div>
+
+</section>
+
+
+<section class="admin" id="admin">
+
+    <div class="admin-box">
+
+        <h2>Creator Dashboard</h2>
+
+        <p>
+            This area will be connected to your secure admin system.
+            Only you will be able to upload, edit and delete videos.
+        </p>
+
+        <button onclick="adminLogin()">
+            Admin Login
+        </button>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    © 2026 <span>iK Video</span> — All Rights Reserved.
+
+</footer>
+
+
+<script>
+
+function adminLogin(){
+
+    let username = prompt("Enter Username:");
+    let password = prompt("Enter Password:");
+
+    if(username === "iK EDITZ!" && password === "3@March@2010"){
+
+        alert("Login Successful!");
+
+        window.location.href =
+        "https://drive.google.com/drive/folders/1_PKxaO2oUGI7Hw_DlcvMj64tQjd5J-DK?usp=drive_link";
+
+    }else{
+
+        alert("Incorrect Username or Password!");
+
+    }
+
+}
+
+</script>
+
+
+<script>
+(() => {
+ const root=document.documentElement, btn=document.getElementById('liquidToggle');
+ const icon=document.getElementById('themeIcon'), label=document.getElementById('themeLabel');
+ let theme=localStorage.getItem('ik-video-theme') ||
+   (matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+ function setTheme(t,save=true){
+   theme=t;root.dataset.theme=t;
+   if(save)localStorage.setItem('ik-video-theme',t);
+   icon.textContent=t==='dark'?'🌙':'☀️';
+   label.textContent=t==='dark'?'Dark':'Light';
+ }
+ setTheme(theme,false);
+ btn.addEventListener('click',()=>setTheme(theme==='dark'?'light':'dark'));
+})();
+</script>
+</body>
+</html>
+```
